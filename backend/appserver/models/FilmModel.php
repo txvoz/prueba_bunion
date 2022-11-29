@@ -61,7 +61,7 @@ class FilmModel extends BasicModel implements IModel
       //*****
       $sql = "select f.*, 
       (select count(*) from copy where fil_id = f.id ) as count_copies,
-      (select count(*) from copy as c where c.id not in (select cop_id from rent where cop_id=c.id and return_date is null) ) as count_available 
+      (select count(c.id) from copy as c where c.fil_id = f.id and c.id not in (select cop_id from rent where cop_id=c.id and return_date is null) ) as count_available 
       from {$this->table} as f 
       {$where} 
       order by {$this->filter} asc {$limit}";
@@ -90,7 +90,7 @@ class FilmModel extends BasicModel implements IModel
       $entity instanceof Film;
       $sql = "select f.*, 
       (select count(*) from copy where fil_id = f.id ) as count_copies,
-      (select count(*) from copy as c where c.id not in (select cop_id from rent where cop_id=c.id and return_date is null) ) as count_available 
+      (select count(*) from copy as c where c.fil_id = f.id and  c.id not in (select cop_id from rent where cop_id=c.id and return_date is null) ) as count_available 
       from {$this->table} as f where f.id = ?";
       $query = $this->conexion->prepare($sql);
       @$query->bindParam(1, $entity->getId());

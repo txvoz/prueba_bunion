@@ -215,4 +215,24 @@ class RentModel extends BasicModel implements IModel
     return $retorno;
   }
 
+  public function updateStatus($id, $date) {
+    $retorno = new stdClass();
+    try {
+       $sql = "update {$this->table} set "
+        . "return_date = ? "
+        . "where id=?";
+      $query = $this->conexion->prepare($sql);
+      @$query->bindParam(1, $date);
+      @$query->bindParam(2, $id);
+      $query->execute();
+      $retorno->data = true;
+      $retorno->status = 200;
+      $retorno->message = "Registro Actualizado.";
+    } catch (PDOException $e) {
+      $retorno->message = Utils::simpleCatchMessage($e->getMessage());
+      $retorno->status = 501;
+    }
+    return $retorno;
+  }
+
 }

@@ -164,4 +164,29 @@ class RentController implements IController, IManagementForm, IAction
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode($r);
     }
+
+
+    public function actionUpdateState()
+    {
+        $e = new Rent();
+        $e->setId($_REQUEST["paramId"]);
+
+        $m = new RentModel();
+        $find = $m->getById($e);
+        if(!$find->data) {
+            http_response_code($find->status);
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode($find);
+            return;
+        }
+
+        $currentDate = date("Y-m-d");
+       
+        $r = $m->updateStatus($e->getId(), $currentDate);
+        http_response_code($r->status);
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($r);
+    }
+
+    
 }
