@@ -1,0 +1,22 @@
+server.port: 8888
+
+logs:
+  prefix: api-bff
+  console: true
+  enable: true
+  pathInfo: C:/wildfly-11.0.0.Final/standalone/log/bff/
+  pathError: C:/wildfly-11.0.0.Final/standalone/log/bff/
+  
+gateway:
+  resources:
+    -
+      host: http://localhost:8081
+      serviceName: bancounion_prueba
+      jwtConfig:
+        activate: false
+        scope: store_scope
+        identifierValue: authorization
+        path: http://localhost:8081/bancounion_prueba/?c=jwt&a=validate
+        excluded:
+        - /jwt
+        - /jwt/validate

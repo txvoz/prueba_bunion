@@ -1,0 +1,47 @@
+{
+  "groups": [
+    {
+      "name": "gateway",
+      "type": "com.txvoz.bff.config.ResourceProps",
+      "sourceType": "com.txvoz.bff.config.ResourceProps"
+    },
+    {
+      "name": "logs",
+      "type": "com.txvoz.bff.config.LogProps",
+      "sourceType": "com.txvoz.bff.config.LogProps"
+    }
+  ],
+  "properties": [
+    {
+      "name": "gateway.resources",
+      "type": "java.util.List<com.txvoz.bff.config.ResourceProps$Resource>",
+      "sourceType": "com.txvoz.bff.config.ResourceProps"
+    },
+    {
+      "name": "logs.console",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.txvoz.bff.config.LogProps"
+    },
+    {
+      "name": "logs.enable",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.txvoz.bff.config.LogProps"
+    },
+    {
+      "name": "logs.path-error",
+      "type": "java.lang.String",
+      "sourceType": "com.txvoz.bff.config.LogProps"
+    },
+    {
+      "name": "logs.path-info",
+      "type": "java.lang.String",
+      "sourceType": "com.txvoz.bff.config.LogProps"
+    },
+    {
+      "name": "logs.prefix",
+      "type": "java.lang.String",
+      "sourceType": "com.txvoz.bff.config.LogProps"
+    }
+  ],
+  "hints": []
+}
